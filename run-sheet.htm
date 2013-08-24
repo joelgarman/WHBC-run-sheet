@@ -1,0 +1,409 @@
+<html>
+<!--Begin CSS Styling-->
+    <style type="text/css">
+        
+    /**Elements**/
+        table{
+            width: 700px;
+            border-collapse: collapse; 
+            font-family: "Calibri", "Arial", sans-serif;
+            font-size-adjust: .45;
+            margin-top: 10px;
+        }
+        img{
+        }
+        
+    /**Classes**/
+        .Song{
+               padding-left: 25px;
+               padding-top: 2px;
+               padding-bottom: 1px;
+               text-align: left;
+               border-top: none;
+               border-bottom: none;
+               border-left: solid;
+               border-right: solid;
+               font-size: 23px;
+               font-family: inherit;
+               font-weight: normal;                        
+        }
+        .Header{
+               padding-left: inherit;
+               padding-top: 2px;
+               padding-bottom: 2px;
+               border-radius: 10px;
+               border-top-color: #CCCCCC;
+               border-bottom-color: #CCCCCC;
+               border-left-color: #000000;
+               border-right-color: #000000;
+               text-align: center;
+               color: #FFFFFF;
+               font-size: 13px;
+               font-family: inherit;
+               font-weight: normal;
+               letter-spacing: 5px;
+               background-color: #666666;
+        }
+        .Regular{
+               padding-left: 5px;
+               padding-top: 2px;
+               padding-bottom: 2px;
+               text-align: left;
+               border-top: none;
+               border-bottom: none;
+               border-left: solid;
+               border-right: solid;
+               font-size: 20px;
+               font-family: inherit;
+               font-weight: normal;                        
+        }
+        .notes{
+               padding-left: 5px;
+               text-align: center;
+               border-top: none;
+               border-bottom: none;
+               border-left: solid;
+               border-right: solid;
+               font-size: 13px;
+               font-family: inherit;
+               font-weight: normal;                        
+        }
+        .add_notes{
+               padding-left: 5px;
+               text-align: center;
+               border: none;
+               font-size: 16px;
+               font-family: inherit;
+               font-weight: normal;                       
+        }
+        .key{
+               padding-left: inherit;
+               text-align: center;
+               border-top: none;
+               border-bottom: none;
+               border-left: solid;
+               border-right: solid black;
+               font-size: 16px;
+               font-family: inherit;
+               font-weight: bold;
+               color: #666666;
+        }
+         .time{
+               padding-left: inherit;
+               text-align: center;
+               border-top: none;
+               border-bottom: none;
+               border-left: solid;
+               border-right: solid;
+               font-size: 13px;
+               font-family: inherit;
+               font-weight: normal;
+               letter-spacing: 2px;
+        }
+        .min{
+               padding-left: inherit;
+               text-align: center;
+               border-top: none;
+               border-bottom: none;
+               border-left: solid;
+               border-right: solid;
+               font-size: 13px;
+               font-family: inherit;
+               font-weight: normal;
+               letter-spacing: 2px;
+        }
+        .personnel_heading{
+               padding-left: 5px;
+               padding-top: 10px;
+               text-align: left;
+               border-bottom: thin dotted #999999;
+               font-family: inherit;
+               font-weight: bold;
+               letter-spacing: 2px;
+        }
+        .plan_person_position{
+               padding-left: 5px;
+               text-align: left;
+               border: none;
+               font-size: 10.5px;
+               font-family: inherit;
+               font-weight: inherit;
+               font-variant: small-caps;
+               letter-spacing: 2px;
+        }
+        .plan_person_name{
+               padding-left: 5px;
+               text-align: left;
+               border: none;
+               font-family: inherit;
+               font-weight: inherit;                        
+        }
+        .even{
+            background-color: #FFFFFF;
+        }
+        .odd{
+            background-color: #DDDDDD;
+        }
+    /**IDs**/
+        table#top{
+            text-align: center;
+        }
+        table#speaker{
+            padding-left: 15px;
+        }
+        table#set{
+            border: solid;
+            padding: 3px;
+        }
+        table#personnel{
+            
+        }
+        table#plan_notes{
+            
+        }        
+        tr#column_title{
+               padding-left: inherit;
+               padding-right: 2px;
+               text-align: center;
+               border: none;
+               font-size: 13px;
+               font-family: inherit;
+               font-weight: normal;
+               font-variant: small-caps;
+               color: #666666;
+               letter-spacing: 2px;
+        }
+        span#campus_name{
+            font-size: 75px;
+            font-weight: bold;
+            color: #666666;
+            letter-spacing: 5px;
+        }
+        span#series_title{
+            font-weight: bold;
+        }
+        span#plan_title{
+        
+        }
+        span#plan_date{
+            font-weight: bold;
+        }
+        span#plan_start_time{
+            padding-left: 5px; 
+        }
+        
+        col#set_col1{ width: 12%;}
+        col#set_col2{ width: 50%;}
+        col#set_col3{ width: 03%;}
+        col#set_col4{ width: 18%;}
+        col#set_col5{ width: 10%;}
+        col#set_col6{ width: 07%;}
+        
+    </style><!--END CSS Styling-->
+    
+  <body><!-- BEGIN document structuring -->
+
+    <!-------------------------------------------------------------
+    |(1)Header Table:                                           |
+    | Logo, Campus name, Sermon, Sermon Text, Service Time,     |
+    | Campus, Date...                                           |
+    ------------------------------------------------------------
+    |(2)Speaker Table:                                          |
+    | Announcements, Teacher                                    |
+    |                                                           |
+    ------------------------------------------------------------
+    |(3)Set Table                                               |
+    |           |               |           |       |           |
+    |   Table 1 |   Table 2     |   Table 3 | ...   | Table 6   |
+    |   "Who"   |   "What/Song" |   "key"   |       | "min"     |
+    |           |               |           |       |           |
+    ------------------------------------------------------------
+    |(4)Personnel Table:                                        |
+    | Scheduled Personnel                                       |
+    ------------------------------------------------------------
+    |(5)Plan Notes Table:                                       |
+    | Additional Plan Notes                                     |
+    -------------------------------------------------------------->
+
+<!------------------HEADER TABLE---------------------->
+<!--
+    This section builds a 1 row table with 2 columns. Column 1 contains the image. Column 2 contains
+    the campus name, series title, plan_title, date and service start time.
+    The table is styled by 'table#top' in the CSS section.  Reference the <span> </span> tags to
+    style the information in column 2.
+-->
+
+    <table id=top>
+     <!--Row 1-->   
+      <tr>
+        <td style="width:10%"><img src="{{ organization.logo_url }}"/></td> <!--church logo-->
+        <td>
+          <span id='campus_name'>{{plan.ministry.parent.name}}</span><br>
+          <span id='series_title'>{{plan.series_title}} :</span> <span id='plan_title'>{{plan.plan_title}}</span><br>
+          <span id='plan_date'>{{plan.dates}}</span> <span id='plan_start_time'>{% for time in plan.plan_times %}{{time.starts_at | date: '%I:%M%p' | downcase}}{%endfor%}</span> <!--| date: '%I:%M%p' | filters out the time from the date code-->
+        </td>
+      </tr>
+    </table>
+    
+<!------------------SPEAKER TABLE---------------------->
+<!--
+    This section builds a 1 row table with 1 column per position.
+    Output: Position (Announcments/Teacher)
+            Plan_Person_Name
+    The table is styled by 'table#speaker' in the CSS section.
+-->
+    
+    <table  id='speaker'> 
+        <tr>
+            {% for plan_person in plan.plan_people_not_declined %}<!--iterate through all scehduled people who have not declined-->
+                {%if plan_person.category.name == "Speaker"%} <!--Filter for people scheduled as "Speaker"-->
+                    <td>
+                      <span class='plan_person_position'>{{plan_person.position}}</span><br> <!--Insert position title in *bold* followed by a newline-->
+                      <span class='plan_person_name'>{{plan_person.person.name}}</span> <!--Insert name-->
+                    </td>
+                {%endif%}
+            {%endfor%}
+        </tr>
+    </table>      
+
+<!------------------SET TABLE---------------------->
+<!--
+    This section builds the run list table row by row. A new row is created for each item in the PCO plan.
+    The table has 6 columns (see layout above). Column settings are defined by the <col> tag.
+    The <td></td> tags denote a new column in the row. Reference <td class = ' '> to style the data in each column.
+-->
+    <table id='set'>
+        <!--define columns-->
+            <col id='set_col1'>
+            <col id='set_col2'>
+            <col id='set_col3'>
+            <col id='set_col4'>
+            <col id='set_col5'>
+            <col id='set_col6'>
+        <tr id='column_title'> <!--title row: contains column titles-->
+            <td>who</td>
+            <td>item</td>
+            <td>key</td>
+            <td>notes</td>
+            <td>start</td>
+            <td>min</td>
+        </tr>
+        
+        {% for item in plan.items %} <!-- iterate through all items in plan to build the table -->
+        
+          {%if item.item_type =="Header"%} <!-- Rules when item is a header -->
+            <tr><td colspan='6' class = 'Header'><span class='item_header_title'>{{item.title}}</span></td></tr>
+          
+          {%else%}<!-- Rules when item is not a header -->
+            
+            <tr {% cycle 'class=even', 'class=odd' %}> <!-- Make a new Row with the following columns: -->
+            
+            <!-- Column 1 : Person -->
+              <td class='notes'>
+                  {% for item_note in item.notes %}
+                      {%if item_note.category_name == "Person"%}
+                          {{item_note.note}}
+                      {%endif%}
+                  {% endfor %}
+              </td>
+              
+            <!-- Column 2 : Item -->
+              <td class='{{item.item_type}}'>
+                <b>{{item.title}}
+              </td>
+              
+            <!-- Column 3 : Key -->
+              <td class='key'>
+                {{item.key}}
+              </td>
+              
+            <!-- Column 4 : Notes -->
+              <td class= 'notes'>
+              {% for item_note in item.notes %}
+                {%if item_note.category_name != "Person"%}
+                    {{item_note.note}}
+                {%endif%}
+              {% endfor %}
+              </td>
+              
+            <!--Column 5 : Start times -->
+              <td class= 'time'>
+                {% for time in plan.plan_times %}
+                  {% for item_time in item.times %}
+                    {% if item_time.time_id == time.id %}{{ item_time.actual_time | date: '%I:%M%p' | downcase }} 
+                    {% endif %}
+                  {% endfor %}
+                {% endfor %}
+              </td>
+              
+            <!--Column 6 : Time Length -->
+              <td class= 'min'>
+                {{item.length}}
+              </td>
+              
+            </tr><!--End Row-->
+          {%endif%}<!--END item.item_type if/else -->
+        {%endfor%}<!-- END plan.item loop -->
+      </table>
+    
+<!------------------PERSONNEL TABLE---------------------->
+<!--
+    This section builds a 4 row table that contains the position and name of
+    scheduled people.  2 rows are dedicated as headers ["Band" and "Tech"]
+    The table is styled by "table#personnel" in the CSS section.
+    Reference <span class=' '> tags to style the information.
+-->
+      <table id='personnel'>
+        <tr>
+            <td colspan=100% class='personnel_heading'>Band</td>
+        </tr>
+        <tr>
+            {% for plan_person in plan.plan_people_not_declined %}<!--search through all scheduled people_not_declined-->
+                {%if plan_person.category.name == "Band"%}<!--Filter for scheduled musicians-->
+                    <td>
+                        <span class='plan_person_position'>{{plan_person.position}}</span> <!-- Insert position title -->
+                        <br>
+                        <span class='plan_person_name'>{{plan_person.person.name}}</span> <!-- Insert person name -->
+                    </td>
+                {%endif%}
+            {%endfor%}
+        </tr>
+        <tr>
+            <td colspan=100% class='personnel_heading' >Tech Team</td>
+        </tr>
+        <tr>
+            {% for plan_person in plan.plan_people_not_declined %}<!--search through all scheduled people_not_declined-->
+                {%if plan_person.category.name == "Audio/Visual"%}<!--Filter for scheduled tech people-->
+                    <td>
+                        <span class='plan_person_position'>{{plan_person.position}}</span> <!-- Insert position title -->
+                        <br>
+                        <span class='plan_person_name'>{{plan_person.person.name}}</span> <!-- Insert person name -->
+                    </td>
+                {%endif%}
+            {%endfor%}
+        </tr>        
+      </table>
+      
+<!------------------NOTES TABLE---------------------->
+<!--
+    This section builds table that contains additional plan notes.
+    A new row is created for each note in the plan.
+    The table is styled by "table#plan_notes" in the CSS section.
+    Reference <span class=' '> tags to style the information.
+-->
+      <table id= 'plan_notes'>
+        <thead><td colspan=100% class='personnel_heading'>Plan Notes</td></thead>
+        <tbody>
+              {% for note in plan.notes %} <!--iterate through all plan notes-->
+                <tr>
+                    <td>
+                        <span class='plan_person_position'>{{note.category_name}}</span> <!-- insert note title-->
+                        <br>
+                        <span class='add_notes'>{{note.note}}</span> <!--insert note contents-->
+                    </td>
+                </tr>
+              {% endfor %}
+        </tbody>
+      </table>
+  </body>
+</html>
